@@ -1,18 +1,17 @@
-// why it is going and checking in other file.
-// why its showing error when using HTMLInputElement (which is actually a input element)
+
+// why its showing error when using HTMLInputElement (which is actually a input element) - caught as typescript onlu knows that documnet.anyquery will return HTMLElement
+// but we may know it can be input or button or anchor any thing so we should use type assertions provided by ts to get exact types.
 
 
-var email: HTMLElement;
-var password: HTMLElement;
-var submit: HTMLElement;
 
-email = document.getElementById("email");
-password = document.getElementById("password");
-submit = document.getElementById("submit");
+
+const email: HTMLInputElement = document.getElementById("email") as HTMLInputElement;
+const password: HTMLInputElement = document.getElementById("password") as HTMLInputElement;
+const submit: HTMLButtonElement = document.getElementById("submit") as HTMLButtonElement;
 
 submit.addEventListener("click",(e: MouseEvent) => {
       e.preventDefault();
-      console.log(email.nodeValue,password.nodeValue);
+      console.log(email.value,password.value);
 });
 
 
